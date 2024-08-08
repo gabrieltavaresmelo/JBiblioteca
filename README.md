@@ -20,7 +20,7 @@ Para executar este projeto, você precisará ter instalado:
 1. Clone o repositório para a sua máquina local:
 
    ```bash
-   git clone https://github.com/seu-usuario/AutorGUI.git
+   git clone https://github.com/gabrieltavaresmelo/JBiblioteca.git
    ```
 
 2. Abra o projeto na sua IDE.
@@ -48,6 +48,8 @@ Contribuições são bem-vindas! Se você tiver sugestões ou melhorias, sinta-s
 ## Referências
 
 https://www.jetbrains.com/help/idea/design-gui-using-swing.html
+
 https://www.youtube.com/watch?v=whF_Qm1epQ8
+
 https://www.youtube.com/watch?v=5vSyylPPEko
 
