@@ -24,9 +24,19 @@ public class MainGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 AutorGUI3 autorGUI = new AutorGUI3();
-                JFrame jFrame = novaJanela("Biblioteca", autorGUI.getPanelMain());
+                JFrame jFrame = novaJanela("Autores", autorGUI.getPanelMain());
             }
         });
+
+        JMenuItem menuItemEditora = new JMenuItem("Editora");
+        menuItemEditora.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EditoraGUI editoraGUI = new EditoraGUI();
+                JFrame jFrame = novaJanela("Editora", editoraGUI.getPanelMain());
+            }
+        });
+
         JMenuItem menuItemSair = new JMenuItem("Sair");
         menuItemSair.addActionListener(new ActionListener() {
             @Override
@@ -36,6 +46,7 @@ public class MainGUI {
         });
 
         menuArquivo.add(menuItemAutor);
+        menuArquivo.add(menuItemEditora);
         menuArquivo.add(menuItemSair);
 
         menuBar.add(menuArquivo);
