@@ -31,7 +31,7 @@ Para executar este projeto, você precisará ter instalado:
 
 - `MainGUI.java`: Classe principal que contém a lógica da interface gráfica e o método `main`.
 - `AutorGUI.java`: Classe que contém a lógica da interface gráfica autores.
-- `Autor.java`: Classe de modelo que representa um autor com atributos como nome, e-mail e telefone.
+- `models.Autor.java`: Classe de modelo que representa um autor com atributos como nome, e-mail e telefone.
 
 ## Screenshots
 

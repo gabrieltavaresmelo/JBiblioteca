@@ -1,5 +1,7 @@
+import dao.AutorDao;
+import models.Autor;
+
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -16,31 +18,35 @@ public class AutorGUI3 extends javax.swing.JFrame {
     public ArrayList<Autor> lista;
     public DefaultListModel modelo;
 
+    private AutorDao dao = new AutorDao();
+
     public JPanel getPanelMain() {
         return mainPanel;
     }
 
     public void carregaDados() {
-        Autor autor1 = new Autor();
-        autor1.nome = "Gabriel";
-        autor1.email = "gabriel@gmail.com";
-        autor1.telefone = "(85) 8899-7788";
+        lista = dao.listar();
 
-        Autor autor2 = new Autor();
-        autor2.nome = "Maria";
-        autor2.email = "maria@gmail.com";
-        autor2.telefone = "(85) 5599-7788";
-
-        lista = new ArrayList<>();
-        lista.add(autor1);
-        lista.add(autor2);
+//        Autor autor1 = new Autor();
+//        autor1.setNome("Gabriel");
+//        autor1.setEmail("gabriel@gmail.com");
+//        autor1.setTelefone("(85) 8899-7788");
+//
+//        Autor autor2 = new Autor();
+//        autor2.setNome("Maria");
+//        autor2.setEmail("maria@gmail.com");
+//        autor2.setTelefone("(85) 5599-7788");
+//
+//        lista = new ArrayList<>();
+//        lista.add(autor1);
+//        lista.add(autor2);
     }
 
     public void carregaGUI() {
         modelo = new DefaultListModel();
 
         for (Autor autor : lista) {
-            modelo.addElement(autor.nome);
+            modelo.addElement(autor.getNome());
         }
 
         list1.setModel(modelo);
@@ -56,10 +62,10 @@ public class AutorGUI3 extends javax.swing.JFrame {
                 String nomeInput = JOptionPane.showInputDialog("Digite o nome do autor:");
 
                 Autor a = new Autor();
-                a.nome = nomeInput;
+                a.setNome(nomeInput);
 
                 lista.add(a);
-                modelo.addElement(a.nome);
+                modelo.addElement(a.getNome());
             }
         });
         removerButton.addActionListener(new ActionListener() {
@@ -84,21 +90,30 @@ public class AutorGUI3 extends javax.swing.JFrame {
         buscarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 String texto = textField1.getText();
+                ArrayList<Autor> autores = dao.buscarPorNome(texto);
+                lista = autores;
 
                 modelo.clear();
 
-                if(texto.equals("")) {
-                    for (Autor autor: lista) {
-                        modelo.addElement(autor.nome);
-                    }
-                } else {
-                    for (Autor autor: lista) {
-                        if(autor.nome.toLowerCase().contains(texto.toLowerCase())) {
-                            modelo.addElement(autor.nome);
-                        }
+                for (Autor autor: autores) {
+                    if(autor.getNome().toLowerCase().contains(texto.toLowerCase())) {
+                        modelo.addElement(autor.getNome());
                     }
                 }
+
+//                if(texto.equals("")) {
+//                    for (Autor autor: lista) {
+//                        modelo.addElement(autor.getNome());
+//                    }
+//                } else {
+//                    for (Autor autor: lista) {
+//                        if(autor.getNome().toLowerCase().contains(texto.toLowerCase())) {
+//                            modelo.addElement(autor.getNome());
+//                        }
+//                    }
+//                }
 
             }
         });

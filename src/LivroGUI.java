@@ -1,3 +1,5 @@
+import models.Livro;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,20 +22,34 @@ public class LivroGUI {
 
     public void carregaDados() {
         Livro livro1 = new Livro();
-        livro1.nome = "Java Básico";
+        livro1.setNome("Java Básico");
+        livro1.setValor(49.9);
+
         Livro livro2 = new Livro();
-        livro2.nome = "Java Avançado";
+        livro2.setNome("Java Avançado");
+        livro2.setValor(70.9);
 
         lista = new ArrayList<>();
         lista.add(livro1);
         lista.add(livro2);
+
+        double soma = 0.0;
+
+        for (Livro livro : lista) {
+            soma += livro.getValor();
+        }
+
+        String somaFormatada = String.format("%.2f", soma);
+
+        System.out.println(soma);
+        JOptionPane.showMessageDialog(null, "Valor dos livros: R$ "+ somaFormatada);
     }
 
     public void carregaGUI() {
         modelo = new DefaultListModel();
 
         for (Livro livro : lista) {
-            modelo.addElement(livro.nome);
+            modelo.addElement(livro.getNome());
         }
 
         list1.setModel(modelo);
@@ -49,10 +65,10 @@ public class LivroGUI {
                 String nomeInput = JOptionPane.showInputDialog("Digite o nome do livro:");
 
                 Livro livro = new Livro();
-                livro.nome = nomeInput;
+                livro.setNome(nomeInput);
 
                 lista.add(livro);
-                modelo.addElement(livro.nome);
+                modelo.addElement(livro.getNome());
             }
         });
         removerButton.addActionListener(new ActionListener() {
@@ -83,12 +99,12 @@ public class LivroGUI {
 
                 if(texto.equals("")) {
                     for (Livro livro: lista) {
-                        modelo.addElement(livro.nome);
+                        modelo.addElement(livro.getNome());
                     }
                 } else {
                     for (Livro livro: lista) {
-                        if(livro.nome.toLowerCase().contains(texto.toLowerCase())) {
-                            modelo.addElement(livro.nome);
+                        if(livro.getNome().toLowerCase().contains(texto.toLowerCase())) {
+                            modelo.addElement(livro.getNome());
                         }
                     }
                 }

@@ -1,6 +1,10 @@
+import dao.AlunoDao;
+import models.Aluno;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class MainGUI {
 
@@ -63,6 +67,23 @@ public class MainGUI {
     }
 
     public static void main(String[] args) {
+
+//        AlunoDao alunoDAO = new AlunoDao();
+//        ArrayList<Aluno> alunos = alunoDAO.listar();
+//
+//        for (Aluno aluno : alunos) {
+//            System.out.println(aluno.getId() + " - " + aluno.getNome());
+//        }
+//
+//        ArrayList<Aluno> alunosJose = alunoDAO.buscarPorNome("josé");
+//
+//        for (Aluno aluno : alunosJose) {
+//            System.out.println(aluno.getId() + " - " + aluno.getNome());
+//        }
+//
+//        Aluno aluno1 = alunoDAO.buscar(1);
+//        System.out.println(aluno1.getId() + " - " + aluno1.getNome());
+
         SwingUtilities.invokeLater(() -> new MainGUI());
     }
 
